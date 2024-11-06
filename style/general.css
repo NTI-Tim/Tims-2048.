@@ -1,0 +1,206 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Titan One', cursive;
+}
+
+:root {
+  /* KONSTANTER SOM BESKRIVER FÄRGPALETTEN --------------------------------------------------------*/
+  /* Temat */
+  --theme: 'light';
+  /* Nyans */
+  --hue: 0;
+  /* Mättnad */
+  --saturation: 45%;
+  /* Ljushet */
+  --lightness: 50%;
+  /* Grundfärgen */
+  --primary-color: hsl(var(--hue), calc(var(--saturation) - 10%), var(--lightness));
+  /* Accentfärgen */
+  --accent-color: hsl(var(--hue), var(--saturation), calc(var(--lightness) + 20%));
+  /* Bakgrundsfärgen */
+  --background-color: hsl(var(--hue), var(--saturation), calc(var(--lightness) + 40%));
+  /* Textfärgen */
+  --text-color: hsl(var(--hue), var(--saturation), calc(var(--lightness) - 35%));
+
+  /* KONSTANTER SOM BESKRIVER ANIMATIONER ---------------------------------------------------------*/
+  /* Snabb övergång hastighet */
+  --transition-speed: 0.25s;
+  /* Snabb övergång hastighet */
+  --quick-transition-speed: 0.125s;
+  /* Snabb övergång hastighet */
+  --slow-transition-speed: 0.5s;
+  /*  */
+  /* --transition-type: ; */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: 2.5vmin;
+  padding: 2.5vmin 5vmin;
+  transition: var(--transition-speed);
+  overflow: hidden;
+}
+
+.display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  margin-bottom: 2.5vmin;
+}
+
+.left-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  width: 25%;
+}
+
+.left-section h2 {
+  width: 50%;
+  font-size: 3vmin;
+  line-height: 1rem;
+  padding: 1vmin 0;
+  margin: 0.75vmin 0;
+}
+
+.middle-section {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.middle-section h1 {
+  color: var(--primary-color);
+  font-size: 15vmin;
+  line-height: 1rem;
+}
+
+main {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* main h3 {
+  z-index: 1;
+  display: none;
+  position: absolute;
+  padding: 20vmin 2.5vmin;
+  text-align: center;
+  font-size: 4.5vmin;
+
+  background-color: var(--primary-color);
+  border: var(--board-border);
+  border-radius: var(--board-border-radius);
+  transition: var(--transition-speed);
+  animation: spawn-in var(--slow-transition-speed) 2.25s normal backwards;
+}
+
+.middle-section,
+main h3:hover {
+  display: inherit;
+} */
+
+.right-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  width: 25%;
+}
+
+.right-section button {
+  width: 50%;
+  font-size: 2.5vmin;
+  padding: 0.25vmin 0;
+  margin: 0.5vmin 0;
+
+  color: var(--text-color);
+  background-color: var(--accent-color);
+  border: 0.5vmin solid var(--primary-color);
+  border-radius: 0.75vmin;
+  cursor: pointer;
+  transition: var(--transition-speed);
+}
+
+.right-section button:hover {
+  background-color: var(--primary-color);
+}
+
+#title-element {
+  animation: slide-down var(--slow-transition-speed) 0s normal backwards;
+}
+
+/* 0.25s paus */
+
+#time-element {
+  animation: slide-right var(--slow-transition-speed) 0.5s normal backwards;
+}
+
+#score-element {
+  animation: slide-right var(--slow-transition-speed) 0.75s normal backwards;
+}
+
+#highscore-element {
+  animation: slide-right var(--slow-transition-speed) 1s normal backwards;
+}
+
+/* 0.25s paus */
+
+#theme-switcher {
+  animation: slide-left var(--slow-transition-speed) 1.5s normal backwards;
+}
+
+#new-game {
+  animation: slide-left var(--slow-transition-speed) 1.75s normal backwards;
+}
+
+/* 0.25s paus */
+
+/* ================================================================================================================================================== */
+/* KEYFRAMES ---------------------------------------------------------------------------------------------------------------------------------------- */
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100vmin);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-100vmin);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(100vmin);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}

@@ -1,0 +1,60 @@
+:root {
+  /* KONSTANTER SOM BESKRIVER STORLEKEN PÅ SPELPLANEN ---------------------------------------------*/
+  /* Rutnätets storlek */
+  --row-quantity: 4;
+  --column-quantity: 4;
+  /* Brickornas storlek */
+  --tile-size: calc(64vmin/var(--row-quantity));
+  /* Avståndet mellan brickorna */
+  --tile-gap: calc(var(--tile-size)/20);
+  /* Rutnätets yttre ram */
+  --board-border: calc(var(--tile-size)/10) solid var(--primary-color);
+  /* Rutnätets yttre ram kanter */
+  --board-border-radius: calc(var(--tile-size)/7.5);
+  /* Brickornas kanter */
+  --tile-radius: calc(var(--tile-size)/10);
+  /* Brickornas text storlek */
+  --tile-font-size: calc(var(--tile-size)/2.75);
+}
+
+#game-board {
+  display: grid;
+  grid-template-rows: repeat(var(--row-quantity), var(--tile-size));
+  grid-template-columns: repeat(var(--column-quantity), var(--tile-size));
+  grid-gap: var(--tile-gap);
+
+  background-color: var(--primary-color);
+  border: var(--board-border);
+  border-radius: var(--board-border-radius);
+  transition: var(--transition-speed);
+  animation: spawn-in var(--slow-transition-speed) 2.25s normal backwards;
+}
+
+.tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: var(--tile-size);
+  height: var(--tile-size);
+  color: hsl(var(--hue), var(--saturation), var(--tile-text-lightness));
+  background-color: hsl(var(--hue), var(--saturation), var(--tile-background-lightness));
+  border-radius: var(--tile-radius);
+  font-size: var(--tile-font-size);
+  font-weight: bold;
+  transition: var(--quick-transition-speed);
+  animation: spawn-in var(--slow-transition-speed) 2.5s normal backwards;
+}
+
+/* ================================================================================================================================================== */
+/* KEYFRAMES ---------------------------------------------------------------------------------------------------------------------------------------- */
+
+@keyframes spawn-in {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
